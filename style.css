@@ -38,3 +38,68 @@ a {
   color: var(--primary);
   text-decoration: none;
 }
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.hide {
+  display: none;
+}
+
+.main-nav.show {
+  transform: translateY(0);
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  font-size: 2.8rem;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  z-index: 999;
+
+  transform: translatey(-100%);
+
+  transition: transform 0.5s ease-in-out;
+}
+
+.main-nav a {
+  color: var(--text);
+}
+
+.hamburger {
+  position: fixed;
+  right: 0;
+  z-index: 1000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.material-icons.closeIcon {
+  display: none;
+}
