@@ -1,8 +1,118 @@
+/* Reset */
+/* 1. Low-specificity isolation using Cascade Layers */
+@layer reset {
+  /* 2. Universal box-sizing and margin clear */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  /* 3. Smooth page-wide scroll baseline */
+  html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none; /* Prevents unwanted mobile text scaling */
+    block-size: 100%; /* Complements body min-block-size */
+    scroll-behavior: smooth;
+  }
+
+  /* 4. Accessible & bulletproof body layout */
+  body {
+    min-block-size: 100svh; /* Uses small viewport height to prevent mobile toolbar shifting */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Clean text rendering on macOS */
+
+    /* Modern 3-row layout pattern (Sticky footer ready) */
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* 5. Responsive, modern media defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto; /* Keeps responsive aspect ratio intact */
+  }
+
+  /* 6. Form control font inheritance */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* 7. Advanced typography safety rules */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance; /* Distributes headline text evenly across lines */
+  }
+
+  p {
+    text-wrap: pretty; /* Prevents lonely "orphan" words at paragraph ends */
+    max-width: 75ch; /* Keeps reading line length naturally comfortable */
+  }
+
+  /* 8. Enable keyword animations for smooth transitions */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords; /* Allows animating to heights like auto or max-content */
+    }
+  }
+}
+
+/* Custom Properties */
+
 :root {
   --background: #ffffff;
   --text: #222222;
   --primary: #2563eb;
   --card: #f5f5f5;
+
+  --clr-primary-400: hsl(213, 94%, 68%);
+  --clr-primary-300: hsl(217, 91%, 60%);
+
+  --clr-neutral-100: hsl(0, 0%, 96%);
+  --clr-neutral-900: hsl(221, 39%, 11%);
+
+  --ff-primary: "Inter Tight", sans-serif;
+
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+
+  --ff-regular: 400;
+  --ff-medium: 500;
+  --ff-semibold: 600;
+  --ff-bold: 700;
+
+  --fs-300: 0.8125rem;
+  --fs-400: 1.25rem;
+  --fs-500: 1.5625rem;
+  --fs-600: 1.953125rem;
+  --fs-700: 2.44140625rem;
+  --fs-800: 3.0517578125rem;
+  --fs-900: 12.8rem;
+}
+
+@media (min-width: 50em) {
+  :root {
+    --fs-300: 0.875rem;
+    --fs-400: 1.5rem;
+    --fs-500: 1.875rem;
+    --fs-600: 2.25rem;
+    --fs-700: 3rem;
+    --fs-800: 3.75rem;
+    --fs-900: 12.8rem;
+  }
 }
 
 * {
@@ -16,7 +126,9 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-400);
+  font-weight: var(--ff-regular);
   background: var(--background);
   color: var(--text);
   line-height: 1.6;
@@ -102,4 +214,42 @@ a {
 
 .material-icons.closeIcon {
   display: none;
+}
+
+/* Fonts */
+/* inter-tight-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter Tight";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/inter-tight-v9-latin/inter-tight-v9-latin-regular.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-tight-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter Tight";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../assets/fonts/inter-tight-v9-latin/inter-tight-v9-latin-500.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-tight-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter Tight";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../assets/fonts/inter-tight-v9-latin/inter-tight-v9-latin-600.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-tight-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter Tight";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/inter-tight-v9-latin/inter-tight-v9-latin-700.woff2")
+    format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
